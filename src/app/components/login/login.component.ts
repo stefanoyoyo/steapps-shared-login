@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,8 @@ export class LoginComponent {
   error = '';
   showPassword = false;
 
+  constructor(private router: Router) {}
+
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
   }
@@ -26,5 +29,7 @@ export class LoginComponent {
     }
     this.error = '';
     // La logica di navigazione sarà gestita dal componente principale
+    this.router.navigate(['/products']);
+
   }
 }
