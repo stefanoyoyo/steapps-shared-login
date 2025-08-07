@@ -4,7 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { UserProduct } from '../../shared/models/userProduct.model';
 
 @Component({
-  selector: 'app-area-privata',
+  selector: 'app-products',
   standalone: true,
   imports: [CommonModule, MatCardModule],
   templateUrl: './products.component.html',

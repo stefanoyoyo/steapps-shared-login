@@ -66,6 +66,16 @@ button[type="submit"]:hover {
   background: #176b87;
 }
 
+.hide {
+  position: absolute;
+  right: 8px;
+  top: 38px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
 .error-message {
   color: #d32f2f;
   margin-top: 1rem;
