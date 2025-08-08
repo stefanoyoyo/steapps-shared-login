@@ -37,20 +37,6 @@
           placeholder="URL immagine"
         />
       </div>
-      <!-- Tag di default -->
-      <div class="input-group">
-        <label>Tag di default</label>
-        <div style="display: flex; gap: 1rem">
-          <label *ngFor="let tag of defaultTags">
-            <input
-              type="checkbox"
-              [checked]="selectedTags.includes(tag)"
-              (change)="toggleDefaultTag(tag, $event)"
-            />
-            {{ tag }}
-          </label>
-        </div>
-      </div>
       <!-- Aggiungi tag manuale -->
       <div class="input-group">
         <label for="customTag">Aggiungi tag</label>

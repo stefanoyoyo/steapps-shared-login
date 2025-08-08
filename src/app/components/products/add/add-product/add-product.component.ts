@@ -15,8 +15,7 @@ export class AddProductComponent {
   success = false;
 
   // Tag di default
-  defaultTags: string[] = ['gioco', 'app'];
-  selectedTags: string[] = [];
+  selectedTags: string[] = ['gioco', 'app'];
   customTag: string = '';
 
   toggleDefaultTag(tag: string, event: any) {
