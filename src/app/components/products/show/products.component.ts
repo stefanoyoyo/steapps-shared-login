@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { UserProduct } from '../../../shared/models/userProduct.model';
 import { CommonService } from '../../../shared/services/common/common.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -78,12 +79,13 @@ export class ProductsComponent {
     },
   ];
 
-  constructor(public common: CommonService) {}
+  constructor(public common: CommonService, private router: Router) {}
 
   openProductLink(link: string) {
     window.open(link, '_blank');
   }
 
   addProduct() {
+    this.router.navigate(['/products/add']);
   }
 }
