@@ -22,7 +22,7 @@ export class ProductsComponent {
       tags: ['app', 'angular'],
     },
     {
-      image: 'https://cdn.pixabay.com/photo/2022/07/05/11/06/mountains-7302806__480.jpg',
+      image: 'https://github.com/ameapps/SharedLogin/blob/master/src/assets/images/products/SportTracker/2x.png?raw=true',
       name: 'SportTracker',
       description: 'App per il monitoraggio delle attività sportive e del cibo assunto',
       link: 'https://ameapps.github.io/SportTracker/#/menu/homepage',
