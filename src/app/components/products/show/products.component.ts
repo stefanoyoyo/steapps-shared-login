@@ -19,63 +19,63 @@ export class ProductsComponent {
       name: 'Prodotto 1',
       description: 'Descrizione del prodotto 1',
       link: 'https://www.google.com/search?q=tramonto+gratis',
-      tags: ['app', 'game'],
+      tags: ['app'],
     },
     {
       image: 'https://cdn.pixabay.com/photo/2022/07/05/11/06/mountains-7302806__480.jpg',
       name: 'Prodotto 2',
       description: 'Descrizione del prodotto 2',
       link: 'https://www.google.com/search?q=montagne+gratis',
-      tags: ['app', 'game'],
+      tags: ['game'],
     },
     {
       image: 'https://tse2.mm.bing.net/th/id/OIP.4nY4Ys05hzDoNVpPJemNHwHaEo?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
       name: 'Prodotto 3',
       description: 'Descrizione del prodotto 3',
       link: 'https://www.google.com/search?q=prodotto+3+gratis',
-      tags: ['app', 'game']
+      tags: ['app']
     },
     {
       image: 'https://tse2.mm.bing.net/th/id/OIP.4nY4Ys05hzDoNVpPJemNHwHaEo?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
       name: 'Prodotto 4',
       description: 'Descrizione del prodotto 4',
       link: 'https://www.google.com/search?q=prodotto+4+gratis',
-      tags: ['app', 'game']
+      tags: ['game']
     },
     {
       image: 'https://tse2.mm.bing.net/th/id/OIP.4nY4Ys05hzDoNVpPJemNHwHaEo?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
       name: 'Prodotto 5',
       description: 'Descrizione del prodotto 5',
       link: 'https://www.google.com/search?q=prodotto+5+gratis',
-      tags: ['app', 'game']
+      tags: ['app']
     },
     {
       image: 'https://tse2.mm.bing.net/th/id/OIP.4nY4Ys05hzDoNVpPJemNHwHaEo?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
       name: 'Prodotto 6',
       description: 'Descrizione del prodotto 6',
       link: 'https://www.google.com/search?q=prodotto+6+gratis',
-      tags: ['app', 'game']
+      tags: ['game']
     },
     {
       image: 'https://tse2.mm.bing.net/th/id/OIP.4nY4Ys05hzDoNVpPJemNHwHaEo?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
       name: 'Prodotto 7',
       description: 'Descrizione del prodotto 7',
       link: 'https://www.google.com/search?q=prodotto+7+gratis',
-      tags: ['app', 'game']
+      tags: ['app']
     },
     {
       image: 'https://tse2.mm.bing.net/th/id/OIP.4nY4Ys05hzDoNVpPJemNHwHaEo?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
       name: 'Prodotto 8',
       description: 'Descrizione del prodotto 8',
       link: 'https://www.google.com/search?q=prodotto+8+gratis',
-      tags: ['app', 'game']
+      tags: ['game']
     },
     {
       image: 'https://tse2.mm.bing.net/th/id/OIP.4nY4Ys05hzDoNVpPJemNHwHaEo?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
       name: 'Prodotto 9',
       description: 'Descrizione del prodotto 9',
       link: 'https://www.google.com/search?q=prodotto+9+gratis',
-      tags: ['app', 'game']
+      tags: ['app']
     },
   ];
 
@@ -104,7 +104,9 @@ export class ProductsComponent {
     this.filterProducts();
   }
 
+
   filterProducts() {
+    console.log('Filtraggio prodotti con tag:', this.selectedTags);
     if (this.selectedTags.length === 0) {
       this.filteredProducts = [...this.products];
     } else {

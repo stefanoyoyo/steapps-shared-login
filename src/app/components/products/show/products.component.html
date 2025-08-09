@@ -21,6 +21,7 @@
         </mat-card-content>
       </div>
     </mat-card>
+    <!-- Visualizzazione dei prodotti -->
     <mat-card *ngFor="let product of filteredProducts" class="product-card" (click)="openProductLink(product.link)">
       <img mat-card-image [src]="product.image" [alt]="product.name" />
       <mat-card-content>
