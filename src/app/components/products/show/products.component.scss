@@ -4,6 +4,36 @@
   max-width: 900px;
   padding: 1rem;
 
+  .tag-filter {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+
+    .filter-label {
+      font-weight: 500;
+      color: var(--primary-dark);
+      margin-right: 0.5rem;
+    }
+
+    .tag-chip {
+      background: #e0e7ef;
+      border: none;
+      border-radius: 12px;
+      padding: 0.3rem 1rem;
+      color: var(--primary-dark);
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      margin-bottom: 0.3rem;
+    }
+    .tag-chip.selected {
+      background: var(--primary);
+      color: #fff;
+    }
+  }
+
   .products-title {
     color: var(--primary);
     text-align: center;

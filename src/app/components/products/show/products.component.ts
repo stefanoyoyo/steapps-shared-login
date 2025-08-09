@@ -79,7 +79,40 @@ export class ProductsComponent {
     },
   ];
 
-  constructor(public common: CommonService, private router: Router) {}
+  // Filtro tag
+  allTags: string[] = [];
+  selectedTags: string[] = [];
+  filteredProducts: UserProduct[] = [];
+
+  constructor(public common: CommonService, private router: Router) {
+    this.updateTags();
+    this.filterProducts();
+  }
+
+  updateTags() {
+    const tagsSet = new Set<string>();
+    this.products.forEach(p => p.tags?.forEach(t => tagsSet.add(t)));
+    this.allTags = Array.from(tagsSet);
+  }
+
+  toggleTag(tag: string) {
+    if (this.selectedTags.includes(tag)) {
+      this.selectedTags = this.selectedTags.filter(t => t !== tag);
+    } else {
+      this.selectedTags.push(tag);
+    }
+    this.filterProducts();
+  }
+
+  filterProducts() {
+    if (this.selectedTags.length === 0) {
+      this.filteredProducts = [...this.products];
+    } else {
+      this.filteredProducts = this.products.filter(p =>
+        p.tags?.some(t => this.selectedTags.includes(t))
+      );
+    }
+  }
 
   openProductLink(link: string) {
     window.open(link, '_blank');

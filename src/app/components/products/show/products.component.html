@@ -1,5 +1,17 @@
 <div class="products-container">
   <h2 class="products-title">Prodotti disponibili</h2>
+  <!-- Filtro tag -->
+  <div class="tag-filter">
+    <span class="filter-label">Filtra per tag:</span>
+    <ng-container *ngFor="let tag of allTags">
+      <button type="button"
+        class="tag-chip"
+        [class.selected]="selectedTags.includes(tag)"
+        (click)="toggleTag(tag)">
+        {{ tag }}
+      </button>
+    </ng-container>
+  </div>
   <div class="products-grid">
     <mat-card class="product-card add-card" (click)="addProduct()">
       <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; min-height: 180px;">
@@ -9,7 +21,7 @@
         </mat-card-content>
       </div>
     </mat-card>
-    <mat-card *ngFor="let product of products" class="product-card" (click)="openProductLink(product.link)">
+    <mat-card *ngFor="let product of filteredProducts" class="product-card" (click)="openProductLink(product.link)">
       <img mat-card-image [src]="product.image" [alt]="product.name" />
       <mat-card-content>
         <h3>{{ product.name }}</h3>
