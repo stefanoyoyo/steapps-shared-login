@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../../models/user.model';
+import { FirebaseConfig } from '../../models/firebaseConfig';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,7 @@ export class CommonService {
   lastRegisteredUser!: User;
   lastLoggedUser!: User;
   lastforgotPswRequest!: User;
+  fbUserConfig!: FirebaseConfig;
 
   constructor() { }
 }
