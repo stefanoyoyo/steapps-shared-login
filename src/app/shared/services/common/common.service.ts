@@ -10,6 +10,8 @@ export class CommonService {
   lastLoggedUser!: User;
   lastforgotPswRequest!: User;
   fbUserConfig!: FirebaseConfig;
+  fbApi: any;
+  fbApiAnalytics: any;
 
   constructor() { }
 }

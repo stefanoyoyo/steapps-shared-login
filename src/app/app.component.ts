@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { AppService } from './shared/services/app/app.service';
+import { AppService as FirebaseService } from './shared/services/firebase/firebase.service';
 import { AssetsService } from './shared/services/assets/assets.service';
 import { FirebaseConfig } from './shared/models/firebaseConfig';
 import { HttpClientModule } from '@angular/common/http';
@@ -24,17 +24,22 @@ export class AppComponent implements OnInit {
 
   constructor(
     private common_service: CommonService,
-    private componentService: AppService
+    private fb_service: FirebaseService
   ) {}
 
   async ngOnInit() {
     // 01. Recupero la configurazione Firebase
-    const fbConfig: FirebaseConfig | undefined = await this.componentService.getFirebaseConfig('ame.dev.apps');
+    const fbConfig: FirebaseConfig | undefined = await this.fb_service.getFirebaseConfig('ame.dev.apps');
     if (!fbConfig) {
       console.error('Errore nel recupero della configurazione Firebase.');
       return;
     }
     console.log('Configurazione Firebase:', fbConfig);
+    const fbApi: boolean = this.fb_service.startFbApi(fbConfig);
+    if (!fbApi) {
+      console.error('Errore nell\'inizializzazione dell\'API Firebase.');
+      return;
+    }
   }
 
   togglePasswordVisibility() {
