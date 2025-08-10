@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../../shared/models/user.model';
 import { CommonService } from '../../shared/services/common/common.service';
+import { FirebaseService } from '../../shared/services/firebase/firebase.service';
 
 @Component({
   selector: 'app-login',
@@ -16,12 +17,16 @@ export class LoginComponent {
   user: User = {
     username: '',
     email: '',
-    password: ''
-  }
+    password: '',
+  };
   error = '';
   showPassword = false;
 
-  constructor(private router: Router, public common:CommonService) {}
+  constructor(
+    private router: Router,
+    public common: CommonService,
+    private fb_service: FirebaseService
+  ) {}
 
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
@@ -34,7 +39,13 @@ export class LoginComponent {
     }
     this.common.lastLoggedUser = this.user;
     this.error = '';
-    // La logica di navigazione sarà gestita dal componente principale
+    //01. Tento il login con le credenziali fornite
+    const fbLogin = this.fb_service.tryLogin(this.user);
+    if (!fbLogin) {
+      this.error = 'Credenziali non valide. Riprova.';
+      return;
+    }
+    //02. Accedo alla pagina dei prodotti
     this.router.navigate(['/products']);
   }
 

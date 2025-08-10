@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { AppService as FirebaseService } from './shared/services/firebase/firebase.service';
+import { FirebaseService as FirebaseService } from './shared/services/firebase/firebase.service';
 import { AssetsService } from './shared/services/assets/assets.service';
 import { FirebaseConfig } from './shared/models/firebaseConfig';
 import { HttpClientModule } from '@angular/common/http';

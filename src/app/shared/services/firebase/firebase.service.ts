@@ -4,12 +4,15 @@ import { AssetsService } from '../assets/assets.service';
 import { CommonService } from '../common/common.service';
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import { User } from '../../models/user.model';
+
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 
 @Injectable({
   providedIn: 'root',
 })
-export class AppService {
+export class FirebaseService {
   constructor(
     private common_service: CommonService,
     private assets_service: AssetsService
@@ -25,6 +28,19 @@ export class AppService {
       return true;
     } catch (error) {
       console.error("Errore nell'inizializzazione dell'API Firebase:", error);
+      return false;
+    }
+  }
+
+  /**Metodo che contatta firebase per sapere se le credenziali inserite sono corrette o meno */
+  async tryLogin(user: User): Promise<boolean> {
+    try {
+      const auth = getAuth(this.common_service.fbApi);
+      const result = await signInWithEmailAndPassword(auth, user.email, user.password);
+      // Se l'autenticazione va a buon fine, restituisci true
+      return !!result.user;
+    } catch (error) {
+      console.error("Errore durante il tentativo di login:", error);
       return false;
     }
   }
