@@ -21,10 +21,15 @@ export class FirebaseHelper {
     path: string,
     dbUrl?: string
   ): Promise<any> {
-    // Se dbUrl è fornito, lo passo a getDatabase, altrimenti uso il default
-    const db: Database = dbUrl ? getDatabase(app, dbUrl) : getDatabase(app);
-    const dbData = await FirebaseHelper.getDbData(db, path);
-    return dbData;
+    try {
+      // Se dbUrl è fornito, lo passo a getDatabase, altrimenti uso il default
+      const db: Database = dbUrl ? getDatabase(app, dbUrl) : getDatabase(app);
+      const dbData = await FirebaseHelper.getDbData(db, path);
+      return dbData;
+    } catch (error) {
+      console.error('Errore nel recupero dei dati Firebase:', error);
+      return null;
+    }
   }
 
   /** Method getting the data available at the specified path using the specified database. */

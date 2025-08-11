@@ -28,10 +28,6 @@ export class FirebaseService {
   /**Metodo che inizializza la connessione con firebase */
   startFbApi(fbConfig: FirebaseConfig): boolean {
     try {
-      console.log(
-        'Inizializzazione API Firebase con la configurazione:',
-        fbConfig
-      );
       this.common_service.fbApp = initializeApp(fbConfig as any);
       this.common_service.fbApiAnalytics = getAnalytics(
         this.common_service.fbApp
@@ -113,11 +109,10 @@ export class FirebaseService {
         return null;
       }
       //02. Recupero i prodotti dell'utente
-      const dbUrl = this.common_service.appConfig.firebase.dbUrl || '';
       const data = await FirebaseHelper.getData(
         this.common_service.fbApp,
         `users/${uid}/allowedProds`,
-        dbUrl
+        this.common_service.appConfig.firebase.dbUrl || ''
       );
       console.info(`Prodotti recuperati per l'utente ${uid}:`, data);
 
@@ -141,17 +136,18 @@ export class FirebaseService {
       //02. Recupero i prodotti dell'utente
       const result: any = {};
       const dbUrl = this.common_service.appConfig.firebase.dbUrl || '';
-      allowedProds.forEach(async (prodName) => {
+      for (const prodName of allowedProds) {
         if (!this.common_service.fbApp) {
           console.error('API Firebase non inizializzata.');
           return;
         }
         const data = await FirebaseHelper.getData(
           this.common_service.fbApp,
-          `users/${uid}/products/${prodName}`
+          `sharedLogin/products/${prodName}`,
+          this.common_service.appConfig.firebase.dbUrl || ''
         );
         result[prodName] = data;
-      });
+      }
       console.info(`Prodotti recuperati per l'utente ${uid}:`, result);
 
       return result;

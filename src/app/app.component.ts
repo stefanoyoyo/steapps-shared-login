@@ -38,7 +38,6 @@ export class AppComponent implements OnInit {
       console.error('Errore nel recupero della configurazione Firebase.');
       return;
     }
-    console.log('Configurazione Firebase:', fbConfig);
     const fbApi: boolean = this.fb_service.startFbApi(fbConfig);
     if (!fbApi) {
       console.error("Errore nell'inizializzazione dell'API Firebase.");
@@ -47,7 +46,6 @@ export class AppComponent implements OnInit {
     //02. Recupero la configurazione dell'applicazione
     const appConfig: DefaultConfig = await this.loadAppConfig();
     this.common_service.appConfig = appConfig;
-    console.log('Configurazione dell\'applicazione:', appConfig);
   }
 
   async loadAppConfig(): Promise<DefaultConfig> {
