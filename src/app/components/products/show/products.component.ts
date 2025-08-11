@@ -71,7 +71,7 @@ export class ProductsComponent implements OnInit {
       description: 'App che propone una serie di tools da usare sul lavoro',
       link: 'https://ameapps.github.io/WorkToolsV2.0/',
       tags: ['app', 'angular'],
-    },
+    }
   ];
 
   // Filtro tag
