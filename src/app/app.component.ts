@@ -5,8 +5,10 @@ import { CommonModule } from '@angular/common';
 import { FirebaseService as FirebaseService } from './shared/services/firebase/firebase.service';
 import { AssetsService } from './shared/services/assets/assets.service';
 import { FirebaseConfig } from './shared/models/firebaseConfig';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonService } from './shared/services/common/common.service';
+import { lastValueFrom } from 'rxjs';
+import { DefaultConfig } from './shared/models/default.config.model';
 
 @Component({
   selector: 'app-root',
@@ -24,12 +26,14 @@ export class AppComponent implements OnInit {
 
   constructor(
     private common_service: CommonService,
-    private fb_service: FirebaseService
+    private fb_service: FirebaseService,
+    private http_service: HttpClient
   ) {}
 
   async ngOnInit() {
     // 01. Recupero la configurazione Firebase
-    const fbConfig: FirebaseConfig | undefined = await this.fb_service.getFirebaseConfig('ame.dev.apps');
+    const fbConfig: FirebaseConfig | undefined =
+      await this.fb_service.getFirebaseConfig('ame.dev.apps');
     if (!fbConfig) {
       console.error('Errore nel recupero della configurazione Firebase.');
       return;
@@ -37,9 +41,19 @@ export class AppComponent implements OnInit {
     console.log('Configurazione Firebase:', fbConfig);
     const fbApi: boolean = this.fb_service.startFbApi(fbConfig);
     if (!fbApi) {
-      console.error('Errore nell\'inizializzazione dell\'API Firebase.');
+      console.error("Errore nell'inizializzazione dell'API Firebase.");
       return;
     }
+    //02. Recupero la configurazione dell'applicazione
+    const appConfig: DefaultConfig = await this.loadAppConfig();
+    console.log('Configurazione dell\'applicazione:', appConfig);
+  }
+
+  async loadAppConfig(): Promise<DefaultConfig> {
+    const value = await lastValueFrom(
+      this.http_service.get<DefaultConfig>('assets/config/default-config.json')
+    );
+    return value;
   }
 
   togglePasswordVisibility() {

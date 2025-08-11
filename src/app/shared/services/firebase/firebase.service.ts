@@ -96,7 +96,9 @@ export class FirebaseService {
   // #region service
 
   /**Metodo che recupera i prodotti di un utente dal real time DB di Firebase */
-  async getUserProducts(uid: string): Promise<Record<string, boolean> | null> {
+  async getUserAllowedProducts(
+    uid: string
+  ): Promise<Record<string, boolean> | null> {
     try {
       console.log(`Recupero prodotti per l'utente: ${uid}`);
       //01. Controlli
@@ -127,6 +129,16 @@ export class FirebaseService {
         error
       );
       return null;
+    }
+  }
+
+  getUserProducts(allowedProds: Record<string, boolean> | null) {
+    try {
+      console.info('Recupero prodotti utente...');
+      return null;
+    } catch (error) {
+      console.error("Errore nel recupero dei prodotti dell'utente:", error);
+      return [];
     }
   }
 
