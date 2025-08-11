@@ -116,7 +116,8 @@ export class FirebaseService {
       const dbUrl = this.common_service.appConfig.firebase.dbUrl || '';
       const data = await FirebaseHelper.getData(
         this.common_service.fbApp,
-        `$users/${dbUrl}/allowedProds`
+        `users/${uid}/allowedProds`,
+        dbUrl
       );
       console.info(`Prodotti recuperati per l'utente ${uid}:`, data);
 
@@ -130,10 +131,30 @@ export class FirebaseService {
     }
   }
 
-  getUserProducts(allowedProds: string[]) {
+  async getUserProducts(uid: string, allowedProds: string[]) {
     try {
       console.info('Recupero prodotti utente...');
-      return null;
+      if (!this.common_service.fbApp) {
+        console.error('API Firebase non inizializzata.');
+        return;
+      }
+      //02. Recupero i prodotti dell'utente
+      const result: any = {};
+      const dbUrl = this.common_service.appConfig.firebase.dbUrl || '';
+      allowedProds.forEach(async (prodName) => {
+        if (!this.common_service.fbApp) {
+          console.error('API Firebase non inizializzata.');
+          return;
+        }
+        const data = await FirebaseHelper.getData(
+          this.common_service.fbApp,
+          `users/${uid}/products/${prodName}`
+        );
+        result[prodName] = data;
+      });
+      console.info(`Prodotti recuperati per l'utente ${uid}:`, result);
+
+      return result;
     } catch (error) {
       console.error("Errore nel recupero dei prodotti dell'utente:", error);
       return [];
