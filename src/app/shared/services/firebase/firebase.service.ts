@@ -116,8 +116,7 @@ export class FirebaseService {
       const dbUrl = this.common_service.appConfig.firebase.dbUrl || '';
       const data = await FirebaseHelper.getData(
         this.common_service.fbApp,
-        'users/' + uid + '/allowedProds',
-        dbUrl
+        `$users/${dbUrl}/allowedProds`
       );
       console.info(`Prodotti recuperati per l'utente ${uid}:`, data);
 
