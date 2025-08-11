@@ -132,7 +132,7 @@ export class FirebaseService {
     }
   }
 
-  getUserProducts(allowedProds: Record<string, boolean> | null) {
+  getUserProducts(allowedProds: string[]) {
     try {
       console.info('Recupero prodotti utente...');
       return null;

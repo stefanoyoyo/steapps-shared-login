@@ -35,8 +35,9 @@ export class ProductsComponent implements OnInit {
       this.common.lastLoggedUser.uId
     );
     console.log('Allowed prods:', allowedProds);
+    const allowedNames = allowedProds ? Object.keys(allowedProds) : [];
     //02. Recupero i suoi prodotti
-    const products = await this.fb_service.getUserProducts(allowedProds);
+    const products = await this.fb_service.getUserProducts(allowedNames);
     console.log('Prodotti utente:', products);
   }
 
