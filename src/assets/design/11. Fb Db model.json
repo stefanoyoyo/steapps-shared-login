@@ -64,7 +64,6 @@
       "info": {
         "username": "ste",
         "sex": "male",
-        "birthday": "1990-01-01",
         "icon": null
       },
       "auth": {
@@ -136,7 +135,6 @@
       "info": {
         "username": "flo",
         "sex": "female",
-        "birthday": "1968-01-07",
         "icon": null
       },
       "auth": {
@@ -155,7 +153,6 @@
       "info": {
         "username": "ale",
         "sex": "male",
-        "birthday": "1997-04-13",
         "icon": null
       },
       "auth": {
@@ -182,7 +179,6 @@
       "info": {
         "username": "dav",
         "sex": "male",
-        "birthday": "1999-03-14",
         "icon": null
       },
       "auth": {
@@ -209,7 +205,6 @@
       "info": {
         "username": "elp",
         "sex": "female",
-        "birthday": "1989-11-28",
         "icon": null
       },
       "auth": {
