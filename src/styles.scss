@@ -1,7 +1,9 @@
 :root {
-  body {
+  html, body {
     margin: 0 !important;
+    height: 100%;
   }
+
 
   --primary: #2193b0;
   --primary-rgb: 33, 147, 176;

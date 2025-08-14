@@ -100,12 +100,13 @@
 .products-layout {
   display: flex;
   align-items: flex-start;
+  height: 100%;
 }
 
 .profile-menu {
   background: var(--card-bg);
   border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(var(--primary-rgb), 0.10);
+  box-shadow: 0 8px 32px rgba(var(--primary-rgb), 0.1);
   padding: 2rem 1.5rem;
   margin-right: 2rem;
   min-width: 220px;
