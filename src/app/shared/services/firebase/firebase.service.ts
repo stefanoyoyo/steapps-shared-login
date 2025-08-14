@@ -111,7 +111,7 @@ export class FirebaseService {
       //02. Recupero i prodotti dell'utente
       const data = await FirebaseHelper.getData(
         this.common_service.fbApp,
-        `users/${uid}/allowedProds`,
+        `users/${uid}/auth/allowedProds`,
         this.common_service.appConfig.firebase.dbUrl || ''
       );
       console.info(`Prodotti recuperati per l'utente ${uid}:`, data);
