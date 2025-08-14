@@ -80,4 +80,16 @@ export class ProductsComponent implements OnInit {
   addProduct() {
     this.router.navigate(['/products/add']);
   }
+
+  editProfile() {
+    // Logica per modifica profilo (es. apri dialog)
+    alert('Funzione modifica profilo non ancora implementata.');
+  }
+
+  deleteProfile() {
+    // Logica per eliminazione profilo (es. conferma)
+    if (confirm('Sei sicuro di voler eliminare il profilo?')) {
+      alert('Funzione elimina profilo non ancora implementata.');
+    }
+  }
 }

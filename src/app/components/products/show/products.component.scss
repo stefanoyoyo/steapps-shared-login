@@ -96,3 +96,63 @@
     }
   }
 }
+
+.products-layout {
+  display: flex;
+  align-items: flex-start;
+}
+
+.profile-menu {
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(var(--primary-rgb), 0.10);
+  padding: 2rem 1.5rem;
+  margin-right: 2rem;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-pic img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--primary);
+  margin-bottom: 1rem;
+}
+
+.profile-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  margin-bottom: 1.5rem;
+}
+
+.profile-btn {
+  width: 100%;
+  padding: 0.7rem;
+  margin-bottom: 0.7rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  &:hover {
+    background: var(--primary-dark);
+  }
+  &.delete {
+    background: var(--error);
+    &:hover {
+      background: #b71c1c;
+    }
+  }
+}
+
+.products-container {
+  flex: 1;
+}
